@@ -78,7 +78,7 @@ class EmailSender {
         const info = await this.transporter.sendMail({
             from: '"El Que Sabe"',
             to: email,
-            subject: "Restablecimiento contraseña El Que Sabe",
+            subject: "Nuevo servicio El Que Sabe",
             html: htmlBody,
         });
 
@@ -153,7 +153,7 @@ class EmailSender {
         const info = await this.transporter.sendMail({
             from: '"El Que Sabe"',
             to: email,
-            subject: "Restablecimiento contraseña El Que Sabe",
+            subject: "Nuevo servicio El Que Sabe",
             html: htmlBody,
         });
 

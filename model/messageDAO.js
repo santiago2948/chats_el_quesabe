@@ -50,8 +50,8 @@ exports.ViewMessages=(estimateId, userName, cb)=>{
 
 exports.notifications= (json, cb)=>{
   const {user, idUser, name} = json;
-  let sql=user==="1"? "select count(*) notificatios from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idFreelancer=? and autor!=? and state_stateId!=5) notificaion where state = 1 or state = 3 or visto=0":
-  "select count(*) notificatios from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idClient=? and autor!=? and state_stateId!=5) notificaion where state = 1 or state = 3 or visto=0"
+  let sql=user==="1"? "select count(*) notificatios from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idFreelancer=? and autor!=? and state_stateId<5) notificaion where state = 1 or state = 3 or visto=0":
+  "select count(*) notificatios from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idClient=? and autor!=? and state_stateId<5) notificaion where state = 1 or state = 3 or visto=0"
   connection.query(sql, [idUser, name], async (err, res)=>{
     if(err){
       console.log(err);
@@ -69,10 +69,10 @@ exports.notifications= (json, cb)=>{
       )
     })
     await new Promise((resolve) => {
-      sql=user==="1"? "select count(*) cuenta from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idFreelancer=? and autor!=? and state_stateId>=5) notificaion where state = 1 or state = 3 or visto=0":
-      "select count(*) cuenta from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idClient=? and autor!=? and state_stateId>=5) notificaion where state = 1 or state = 3 or visto=0"    
-      connection.query(sql, [idUser, name], (err, res)=>{
-        contractsNotifications+= res[0].cuenta;
+      sql=user==="1"? "select count(*) cuenta from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idFreelancer=? and autor!=? and state_stateId>=5) notificaion where visto=0":
+      "select count(*) cuenta from (select state_stateId state, visto, sendedBy from estimate left join messages using(estimateId) where idClient=? and autor!=? and state_stateId>=5) notificaion where visto=0"    
+      connection.query(sql, [idUser, name], (err, response)=>{
+        contractsNotifications+= response[0].cuenta;
         resolve();
       }
     )
