@@ -58,8 +58,8 @@ exports.notifications= (json, cb)=>{
       cb({response: false, notifications: 0});
     }else{
       let cuenta=res[0].notificatios;
-      let sql =user==="2"? "select count(*) cuenta from estimate where state_stateId=1 or state_stateId = 3 and idClient=? and sendedBy!=?":
-      "select count(*) cuenta from estimate where state_stateId=1 or state_stateId = 1 and idFreelancer=? and sendedBy!=?";
+      let sql =user==="2"? "select count(*) cuenta from estimate where (state_stateId=1 or state_stateId = 3) and idClient=? and sendedBy!=?":
+      "select count(*) cuenta from estimate where (state_stateId=1 or state_stateId = 1) and idFreelancer=? and sendedBy!=?";
       let contractsNotifications = 0;
       await new Promise((resolve) => {
         connection.query(sql, [idUser,parseInt(user)], (err, res)=>{

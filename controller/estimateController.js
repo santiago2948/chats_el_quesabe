@@ -25,7 +25,7 @@ exports.getUserEstimates = (req, res) => {
 exports.creatEstimate = (req, res, next)=>{
     let link=null;
         try {
-            if(req.file.path)
+            if(req.file && req.file.path)
             link=req.file.path;
         } catch (error) {
             console.log(error+"\n en el arhivo estimateController");
