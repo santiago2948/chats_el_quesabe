@@ -78,7 +78,6 @@ io.on("connection", (socket) => {
     })
 
     socket.on("disconnect", () => {
-        console.log("Usuario desconectado", socket.id)
         let iduser=rooms[socket.id];
         delete rooms[socket.id];
         socket.leave(iduser);
@@ -86,8 +85,7 @@ io.on("connection", (socket) => {
             const index = rooms[room].indexOf(socket.id);
             if (index !== -1) {
               rooms[room].splice(index, 1); // Eliminar usuario de la lista al desconectarse
-              io.to(room).emit("users_changed", rooms[room].length); // Emitir evento para actualizar usuarios
-              console.log(rooms[room].length, "Usuarios restantes")
+              io.to(room).emit("users_changed", rooms[room].length); 
             }
         });
     })

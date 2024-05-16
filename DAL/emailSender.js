@@ -81,8 +81,6 @@ class EmailSender {
             subject: "Nuevo servicio El Que Sabe",
             html: htmlBody,
         });
-
-        console.log("ID del mensaje:", info.messageId);
         return info;
     } catch (error) {
         console.error("Error al enviar el correo electrónico:", error);
@@ -156,8 +154,6 @@ class EmailSender {
             subject: "Nuevo servicio El Que Sabe",
             html: htmlBody,
         });
-
-        console.log("ID del mensaje:", info.messageId);
         return info;
     } catch (error) {
         console.error("Error al enviar el correo electrónico:", error);

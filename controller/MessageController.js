@@ -66,7 +66,6 @@ exports.setView= (req, res)=>{
 
 exports.notifications=(req,res)=>{
     notifications(req.body, (response)=>{
-        console.log(response)
         res.json(response);
     })
 }

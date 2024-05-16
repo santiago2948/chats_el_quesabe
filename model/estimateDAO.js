@@ -78,8 +78,6 @@ exports.createEstimate= async (json, cb)=>{
       fs.unlink(photo, (error, result) => {
           if (error) {
               console.error("Error deleting file:", error);
-          } else {
-              console.log("File deleted successfully.");
           }
       });
     }
