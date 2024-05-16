@@ -60,13 +60,13 @@ exports.getMessages=(req, res) => {
 exports.setView= (req, res)=>{
     let {estimateId, userName} = req.body;
     ViewMessages(estimateId, userName, (response)=>{
-        console.log(response);
         res.json(response);
     });
 }
 
 exports.notifications=(req,res)=>{
     notifications(req.body, (response)=>{
+        console.log(response)
         res.json(response);
     })
 }
